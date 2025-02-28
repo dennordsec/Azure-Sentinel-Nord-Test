@@ -1,0 +1,109 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspaceName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Log Analytics workspace."
+      }
+    },
+    "functionName": {
+      "type": "string",
+      "defaultValue": "NordPass",
+      "minLength": 1,
+      "maxLength": 11,
+      "metadata": {
+        "description": "Specifies the name of the Function App."
+      }
+    },
+    "apiEndpoint": {
+      "type": "string",
+      "metadata": {
+        "description": "URI to the API endpoint to query data."
+      },
+      "defaultValue": "https://api-activities.eu.nordpass.com/activities/query"
+    },
+    "apiToken": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Specifies the API Key to connect to the API of NordPass"
+      }
+    },
+    "baseUri": {
+      "type": "string",
+      "metadata": {
+        "description": "Specifies the URI of the artifacts on GitHub"
+      },
+      "defaultValue": "https://github.com/dennordsec/Azure-Sentinel-Nord/master/Solutions/NordPass/Data%20Connectors/deployment/"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "NordPassTable",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[uri(parameters('baseUri'), 'NordPass_custom_table.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "workspaceName": {
+            "value": "[parameters('workspaceName')]"
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "FunctionApp",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[uri(parameters('baseUri'), 'NordPass_function_app.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "functionName": {
+            "value": "[parameters('functionName')]"
+          },
+          "apiEndpoint": {
+            "value": "[parameters('apiEndpoint')]"
+          },
+          "dataCollectionEndpoint": {
+            "value": "[reference('NordPassTable').outputs.endpointUri.value]"
+          },
+          "apiToken": {
+            "value": "[parameters('apiToken')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "NordPassTable"
+      ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "DataConnector",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[uri(parameters('baseUri'), 'NordPass_data_connector.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "workspaceName": {
+            "value": "[parameters('workspaceName')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "NordPassTable"
+      ]
+    }
+  ]
+}

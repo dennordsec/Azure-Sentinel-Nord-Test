@@ -1,0 +1,119 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspaceName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the Log Analytics workspace where the solution will be deployed."
+      }
+    }
+  },
+  "variables": {
+    "_dataConnectorContentId": "NordPass"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces",
+      "apiVersion": "2022-10-01",
+      "name": "[parameters('workspaceName')]",
+      "location": "[resourceGroup().location]"
+    },
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/providers/onboardingStates",
+      "apiVersion": "2023-04-01-preview",
+      "name": "[concat(parameters('workspaceName'), '/Microsoft.SecurityInsights/default')]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName'))]"
+      ]
+    },
+    {
+      "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('_dataConnectorContentId'))]",
+      "apiVersion": "2021-03-01-preview",
+      "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
+      "location": "[resourceGroup().location]",
+      "kind": "GenericUI",
+      "dependsOn": [
+        "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName'))]",
+        "[resourceId('Microsoft.OperationalInsights/workspaces/providers/onboardingStates', parameters('workspaceName'), 'Microsoft.SecurityInsights', 'default')]"
+      ],
+      "properties": {
+        "connectorUiConfig": {
+          "id": "NordPass",
+          "title": "NordPass",
+          "publisher": "NordPass",
+          "descriptionMarkdown": "The [NordPass](https://nordpass.com) integration with Microsoft Sentinel allows you to collect NordPass logs and security-related events. This enables enhanced monitoring and analysis of credential management activities.",
+          "graphQueriesTableName": "NordPassEventLogs_CL",
+          "graphQueries": [
+            {
+              "metricName": "Total data received",
+              "legend": "NordPass",
+              "baseQuery": "{{graphQueriesTableName}}"
+            }
+          ],
+          "dataTypes": [
+            {
+              "name": "{{graphQueriesTableName}}",
+              "lastDataReceivedQuery": "{{graphQueriesTableName}}\n | summarize Time = max(TimeGenerated)\n | where isnotempty(Time)"
+            }
+          ],
+          "connectivityCriterias": [
+            {
+              "type": "IsConnectedQuery",
+              "value": [
+                "{{graphQueriesTableName}}\n | summarize LastLogReceived = max(TimeGenerated)\n | project IsConnected = LastLogReceived > ago(7d)"
+              ]
+            }
+          ],
+          "availability": {
+            "status": 1,
+            "isPreview": false
+          },
+          "permissions": {
+            "resourceProvider": [
+              {
+                "provider": "Microsoft.OperationalInsights/workspaces",
+                "permissionsDisplayText": "Requires read and write access to the Log Analytics workspace.",
+                "providerDisplayName": "NordPass Log Analytics Workspace",
+                "scope": "Workspace",
+                "requiredPermissions": {
+                  "write": true,
+                  "read": true,
+                  "delete": true
+                }
+              }
+            ],
+            "customs": [
+              {
+                "name": "Azure Functions Permissions",
+                "description": "Access to Azure Functions is needed to create and manage function apps for log ingestion."
+              },
+              {
+                "name": "NordPass API Access",
+                "description": "An API Token from NordPass is necessary to retrieve security logs."
+              }
+            ]
+          },
+          "instructionSteps": [
+            {
+              "description": ">**NOTE:** This connector utilizes Azure Functions to securely retrieve NordPass logs and integrate them into Microsoft Sentinel."
+            },
+            {
+              "description": ">**(Optional Step)** Consider storing workspace credentials and API tokens in Azure Key Vault for enhanced security."
+            },
+            {
+              "description": "**STEP 1 - Obtain NordPass API Credentials**\n\n Follow NordPass documentation](https://nordpass.com) to generate an API token for log access."
+            },
+            {
+              "description": "**STEP 2 - Deploy the Azure Function App**\n\n>**IMPORTANT:** Ensure a custom table for logs is created prior to deployment."
+            },
+            {
+              "description": "To automate deployment of the NordPass connector, follow these steps:\n\n1. Click the **Deploy to Azure** button below.\n\n\t[![Deploy To Azure](https://aka.ms/deploytoazurebutton)](https://aka.ms/sentinel-NordPass-azuredeploy)"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
