@@ -35,7 +35,7 @@
       "metadata": {
         "description": "Specifies the URI of the artifacts on GitHub"
       },
-      "defaultValue": "https://github.com/dennordsec/Azure-Sentinel-Nord-Test/tree/main/Solutions/NordPass/Data%20Connectors/deployment/"
+      "defaultValue": "https://github.com/dennordsec/Azure-Sentinel-Nord-Test/blob/main/Solutions/NordPass/Data%20Connectors/deployment/"
     }
   },
   "resources": [
