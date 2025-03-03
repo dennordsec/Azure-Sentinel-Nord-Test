@@ -45,12 +45,6 @@
             },
             "defaultValue": "https://api-activities.eu.nordpass.com/activities/query"
         },
-        "dcr": {
-            "type": "string",
-            "metadata": {
-                "description": "Data Collection Rule"
-            }
-        },
         "storagePrefix": {
             "type": "string",
             "defaultValue": "storage",
