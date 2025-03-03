@@ -17,14 +17,14 @@
         "description": "Specifies the name of the Function App."
       }
     },
-    "apiEndpoint": {
+    "activitiesEndpoint": {
       "type": "string",
       "metadata": {
         "description": "URI to the API endpoint to query data."
       },
       "defaultValue": "https://api-activities.eu.nordpass.com/activities/query"
     },
-    "apiToken": {
+    "activitiesToken": {
       "type": "securestring",
       "metadata": {
         "description": "Specifies the API Key to connect to the API of NordPass"
@@ -70,14 +70,14 @@
           "functionName": {
             "value": "[parameters('functionName')]"
           },
-          "apiEndpoint": {
-            "value": "[parameters('apiEndpoint')]"
+          "activitiesEndpoint": {
+            "value": "[parameters('activitiesEndpoint')]"
           },
           "dataCollectionEndpoint": {
             "value": "[reference('NordPassTable').outputs.endpointUri.value]"
           },
-          "apiToken": {
-            "value": "[parameters('apiToken')]"
+          "activitiesToken": {
+            "value": "[parameters('activitiesToken')]"
           }
         }
       },
