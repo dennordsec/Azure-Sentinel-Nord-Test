@@ -45,6 +45,18 @@
             },
             "defaultValue": "https://api-activities.eu.nordpass.com/activities/query"
         },
+        "immutableId": {
+            "type": "string",
+            "metadata": {
+                "description": "DCE immutable Id"
+            }
+        },
+        "tableName": {
+            "type": "string",
+            "metadata": {
+                "description": "Table name"
+            }
+        },
         "storagePrefix": {
             "type": "string",
             "defaultValue": "storage",

@@ -78,6 +78,12 @@
           },
           "activitiesToken": {
             "value": "[parameters('activitiesToken')]"
+          },
+          "immutableId": {
+            "value": "[reference('NordPassTable').outputs.immutableId.value]"
+          },
+          "tableName": {
+            "value": "[reference('NordPassTable').outputs.tableName.value]"
           }
         }
       },
