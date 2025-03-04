@@ -15,7 +15,15 @@
   "customHandler": {
     "description": {
       "defaultExecutablePath": "bin/handler.exe",
-      "workingDirectory": "bin"
+      "workingDirectory": "bin",
+      "arguments": [
+        "-dcr-stream", "%TABLE_NAME%",
+        "-dcr-uuid", "%DCR_IMMUTABLE_ID%",
+        "-logs-endpoint", "%DATA_COLLECTION_ENDPOINT%",
+        "-storage-endpoint", "%BLOB_URL%",
+        "-activities-token", "%ACTIVITIES_TOKEN%",
+        "-activities-endpoint", "%ACTIVITIES_ENDPOINT%"
+      ]
     }
   }
 }

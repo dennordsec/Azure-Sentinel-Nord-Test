@@ -363,10 +363,13 @@
                 "WEBSITE_RUN_FROM_PACKAGE": "1",
                 "AzureWebJobsStorage": "[NF.secretName(variables('functionName'), 'AzureWebJobsStorage')]",
                 "schedule": "[parameters('functionSchedule')]",
-                "activitiesEndpoint": "[parameters('activitiesEndpoint')]",
-                "activitiesToken": "[NF.secretName(variables('functionName'), 'activitiesToken')]",
+                "ACTIVITIES_ENDPOINT": "[parameters('activitiesEndpoint')]",
+                "ACTIVITIES_TOKEN": "[NF.secretName(variables('functionName'), 'activitiesToken')]",
                 "AZURE_CLIENT_ID": "[reference(resourceId('Microsoft.Web/sites', variables('functionName')), '2019-08-01', 'full').identity.principalId]",
-                "dataCollectionEndpoint": "[NF.secretName(variables('functionName'), 'dataCollectionEndpoint')]"
+                "DATA_COLLECTION_ENDPOINT": "[parameters('dataCollectionEndpoint')]",
+                "DCR_IMMUTABLE_ID": "[parameters('immutableId')]",
+                "TABLE_NAME": "[parameters('tableName')]",
+                "BLOB_URL": "[concat('https://', variables('storageAccountName'), '.blob.core.windows.net/')]"
             }
         },
         {
