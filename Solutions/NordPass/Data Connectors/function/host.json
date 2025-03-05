@@ -14,8 +14,7 @@
   },
   "customHandler": {
     "description": {
-      "defaultExecutablePath": "bin/handler.exe",
-      "workingDirectory": "bin",
+      "defaultExecutablePath": "handler.exe",
       "arguments": [
         "-dcr-stream", "%TABLE_NAME%",
         "-dcr-uuid", "%DCR_IMMUTABLE_ID%",
