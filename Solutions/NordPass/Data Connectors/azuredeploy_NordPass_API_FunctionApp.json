@@ -84,6 +84,9 @@
           },
           "tableName": {
             "value": "[reference('NordPassTable').outputs.tableName.value]"
+          },
+          "dataCollectionEndpointRaw": {
+            "value": "[reference('NordPassTable').outputs.dataCollectionEndpoint.value]"
           }
         }
       },

@@ -57,6 +57,12 @@
                 "description": "Table name"
             }
         },
+        "dataCollectionEndpointRaw": {
+            "type": "string",
+            "metadata": {
+                "description": "data Collection Endpoint Raw link"
+            }
+        },
         "storagePrefix": {
             "type": "string",
             "defaultValue": "storage",
@@ -378,7 +384,7 @@
                 "ACTIVITIES_ENDPOINT": "[parameters('activitiesEndpoint')]",
                 "ACTIVITIES_TOKEN": "[NF.secretName(variables('functionName'), 'activitiesToken')]",
                 "AZURE_CLIENT_ID": "[reference(resourceId('Microsoft.Web/sites', variables('functionName')), '2019-08-01', 'full').identity.principalId]",
-                "DATA_COLLECTION_ENDPOINT": "[parameters('dataCollectionEndpoint')]",
+                "DATA_COLLECTION_ENDPOINT": "[parameters('dataCollectionEndpointRaw')]",
                 "DCR_IMMUTABLE_ID": "[parameters('immutableId')]",
                 "TABLE_NAME": "[parameters('tableName')]",
                 "BLOB_URL": "[concat('https://', variables('storageAccountName'), '.blob.core.windows.net/')]"
