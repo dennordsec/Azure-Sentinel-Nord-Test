@@ -16,10 +16,10 @@
     "description": {
       "defaultExecutablePath": "handler.exe",
       "arguments": [
-        "-dcr-stream", "%TABLE_NAME%",
-        "-dcr-uuid", "%DCR_IMMUTABLE_ID%",
-        "-logs-endpoint", "%DATA_COLLECTION_ENDPOINT%",
-        "-storage-endpoint", "%BLOB_URL%",
+        "-dcr-stream", "Custom-NordPassEventLogs_CL",
+        "-dcr-uuid", "dcr-80af63ba55f74110befd65a6303d526e",
+        "-logs-endpoint", "https://nordpass-5430.northeurope-1.ingest.monitor.azure.com",
+        "-storage-endpoint", "https://storage6s4erjo632dqu.blob.core.windows.net/",
         "-activities-token", "%ACTIVITIES_TOKEN%",
         "-activities-endpoint", "%ACTIVITIES_ENDPOINT%"
       ]
