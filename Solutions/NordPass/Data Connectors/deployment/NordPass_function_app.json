@@ -97,8 +97,7 @@
         "keyVaultSecretReader": "[format('/subscriptions/){0}/providers/Microsoft.Authorization/roleDefinitions/4633458b-17de-408a-b874-0445c86b69e6', subscription().subscriptionId)]",
         "metricsPublisher": "[format('/subscriptions/){0}/providers/Microsoft.Authorization/roleDefinitions/3913510d-42f4-4e42-8a64-420c390055eb', subscription().subscriptionId)]",
         "uniqueRoleGuidMetricsPublisher": "[guid(resourceId('Microsoft.Storage/storageAccounts', variables('functionName')))]",
-        "uniqueRoleGuidKeyVaultSecretReader": "[guid(resourceId('Microsoft.KeyVault/vaults', variables('functionName')))]",
-        "storageBlobContributorRoleId": "ba92f5b4-2d11-453d-a403-e96b0029c9fe"
+        "uniqueRoleGuidKeyVaultSecretReader": "[guid(resourceId('Microsoft.KeyVault/vaults', variables('functionName')))]"
     },
     "resources": [
         {
@@ -437,17 +436,12 @@
             ]
         },
         {
-            "type": "Microsoft.Storage/storageAccounts/blobServices/containers/providers/roleAssignments",
-            "apiVersion": "2018-01-01-preview",
-            "name": "[concat(variables('storageAccountName'), '/default/', 'AzureWebJobsStorage', '/Microsoft.Authorization/', guid(variables('storageAccountName'), 'blobAccess'))]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
-                "[resourceId('Microsoft.Storage/storageAccounts/blobServices/containers', variables('storageAccountName'), 'default', 'cursors')]",
-                "[resourceId('Microsoft.Web/sites', variables('functionName'))]"
-            ],
+            "type": "Microsoft.Authorization/roleAssignments",
+            "apiVersion": "2020-04-01-preview",
+            "scope": "/subscriptions/26d31667-62cb-48bf-8dba-a4f85a1320b7/resourceGroups/FullNordPassSolutionTest/providers/Microsoft.Storage/storageAccounts/storage6s4erjo632dqu",
             "properties": {
-                "principalId": "[reference(resourceId('Microsoft.Web/sites', variables('functionName')), '2016-08-01', 'Full').identity.principalId]",
-                "roleDefinitionId": "[variables('storageBlobContributorRoleId')]"
+                "principalId": "[reference(resourceId('Microsoft.Web/sites', 'nordpass6s4erjo6')).identity.principalId]",
+                "roleDefinitionId": "/subscriptions/26d31667-62cb-48bf-8dba-a4f85a1320b7/providers/Microsoft.Authorization/roleDefinitions/ba92f5b4-2d11-453d-a403-e96b0029c9fe"
             }
         }
     ],
