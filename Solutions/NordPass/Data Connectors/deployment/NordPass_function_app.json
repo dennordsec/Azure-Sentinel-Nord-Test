@@ -439,9 +439,9 @@
         },
         {
             "type": "Microsoft.Authorization/roleAssignments",
-            "apiVersion": "2018-01-01-preview",
+            "apiVersion": "2018-04-01-preview",
             "name": "[variables('uniqueRoleGuidBlobReader')]",
-            "scope": "Workspace",
+            "scope": "/subscriptions/26d31667-62cb-48bf-8dba-a4f85a1320b7/resourceGroups/NordPassTestRG/providers/Microsoft.Storage/storageAccounts/nordpassstorage",
             "dependsOn": [
                 "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
                 "[resourceId('Microsoft.Web/sites', variables('functionName'))]"
