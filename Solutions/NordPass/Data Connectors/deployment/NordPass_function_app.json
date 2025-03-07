@@ -441,7 +441,7 @@
             "type": "Microsoft.Authorization/roleAssignments",
             "apiVersion": "2020-04-01-preview",
             "name": "[variables('uniqueRoleGuidBlobReader')]",
-            "scope": "Workspace",
+            "scope": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().id, '/providers/Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
             "dependsOn": [
                 "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
                 "[resourceId('Microsoft.Web/sites', variables('functionName'))]"
