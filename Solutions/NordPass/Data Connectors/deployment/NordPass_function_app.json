@@ -439,11 +439,11 @@
         {
             "type": "Microsoft.Storage/storageAccounts/blobServices/containers/providers/roleAssignments",
             "apiVersion": "2018-01-01-preview",
-            "name": "[concat(variables('storageAccountName'), '/default/', 'AzureWebJobsStorage', '/Microsoft.Authorization/', guid(resourceGroup().id, 'blobAccess'))]",
+            "name": "[concat(variables('storageAccountName'), '/default/', 'AzureWebJobsStorage', '/Microsoft.Authorization/', guid(variables('storageAccountName'), 'blobAccess'))]",
             "dependsOn": [
                 "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
                 "[resourceId('Microsoft.Storage/storageAccounts/blobServices/containers', variables('storageAccountName'), 'default', 'cursors')]",
-                "[resourceId('Microsoft.Insights/components', variables('functionName'))]"
+                "[resourceId('Microsoft.Web/sites', variables('functionName'))]"
             ],
             "properties": {
                 "principalId": "[reference(resourceId('Microsoft.Web/sites', variables('functionName')), '2016-08-01', 'Full').identity.principalId]",
