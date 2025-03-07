@@ -447,7 +447,7 @@
             ],
             "properties": {
                 "roleDefinitionId": "[variables('keyVaultCryptoOfficer')]",
-                "principalId": "[reference(resourceId('Microsoft.Web/sites', variables('functionName')), '2019-08-01', 'full').identity.principalId]",
+                "principalId": "[reference(resourceId('Microsoft.Web/sites', variables('functionName')), '2019-08-01', 'full').identity.principalId]"
             }
         }
     ],
