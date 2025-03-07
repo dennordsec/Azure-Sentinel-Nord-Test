@@ -437,9 +437,9 @@
             ]
         },
         {
-            "type": "Microsoft.KeyVault/vaults/providers/roleAssignments",
+            "type": "Microsoft.Authorization/roleAssignments",
             "apiVersion": "2018-01-01-preview",
-            "name": "[concat('/Microsoft.Authorization/', variables('storageAccountName'))]",
+            "name": "[concat(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '/providers/Microsoft.Authorization/roleAssignments/', guid(variables('storageAccountName'), variables('keyVaultCryptoOfficer')))]",
             "dependsOn": [
                 "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
                 "[resourceId('Microsoft.Web/sites', variables('functionName'))]"
