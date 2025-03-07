@@ -99,7 +99,7 @@
         "storageContributor": "[format('/subscriptions/){0}/providers/Microsoft.Authorization/roleDefinitions/ba92f5b4-2d11-453d-a403-e96b0029c9fe', subscription().subscriptionId)]",
         "uniqueRoleGuidMetricsPublisher": "[guid(resourceId('Microsoft.Storage/storageAccounts', variables('functionName')))]",
         "uniqueRoleGuidKeyVaultSecretReader": "[guid(resourceId('Microsoft.KeyVault/vaults', variables('functionName')))]",
-        "uniqueRoleGuidBlobContributor": "[guid(resourceId('Microsoft.KeyVault/vaults', variables('functionName')))]"
+        "uniqueRoleGuidBlobContributor": "[guid(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')))]"
     },
     "resources": [
         {
