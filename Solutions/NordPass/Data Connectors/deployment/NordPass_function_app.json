@@ -360,7 +360,7 @@
                 "clientAffinityEnabled": true,
                 "alwaysOn": true,
                 "siteConfig": {
-                    "powerShellVersion": "7.2"
+                    "windowsFxVersion": "1.0"
                 }
             }
         },
