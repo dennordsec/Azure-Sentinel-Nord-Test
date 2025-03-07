@@ -437,7 +437,7 @@
             ]
         },
         {
-            "type": "Microsoft.Authorization/roleAssignments",
+            "type": "Microsoft.KeyVault/vaults/providers/roleAssignments",
             "apiVersion": "2018-01-01-preview",
             "name": "[concat('/Microsoft.Authorization/', variables('storageAccountName'))]",
             "dependsOn": [
