@@ -79,8 +79,8 @@
           "activitiesToken": {
             "value": "[parameters('activitiesToken')]"
           },
-          "immutableId": {
-            "value": "[reference('NordPassTable').outputs.immutableId.value]"
+          "dcrImmutableId": {
+            "value": "[reference('NordPassTable').outputs.dcrImmutableId.value]"
           },
           "tableName": {
             "value": "[reference('NordPassTable').outputs.tableName.value]"

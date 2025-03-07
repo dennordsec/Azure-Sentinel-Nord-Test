@@ -118,7 +118,7 @@
       "type": "string",
       "value": "[reference(resourceId('Microsoft.Insights/dataCollectionEndpoints', 'NordPass'), '2021-04-01').logsIngestion.endpoint]"
     },
-    "immutableId": {
+    "dcrImmutableId": {
       "type": "string",
       "value": "[reference(resourceId('Microsoft.Insights/dataCollectionRules', 'NordPass'), '2021-04-01').immutableId]"
     },
