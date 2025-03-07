@@ -45,10 +45,10 @@
             },
             "defaultValue": "https://api-activities.eu.nordpass.com/activities/query"
         },
-        "immutableId": {
+        "dcrImmutableId": {
             "type": "string",
             "metadata": {
-                "description": "DCE immutable Id"
+                "description": "DCR immutable Id"
             }
         },
         "tableName": {
@@ -397,9 +397,8 @@
                 "schedule": "[parameters('functionSchedule')]",
                 "ACTIVITIES_ENDPOINT": "[parameters('activitiesEndpoint')]",
                 "ACTIVITIES_TOKEN": "[NF.secretName(variables('functionName'), 'activitiesToken')]",
-                "AZURE_CLIENT_ID": "[reference(resourceId('Microsoft.Web/sites', variables('functionName')), '2019-08-01', 'full').identity.principalId]",
                 "DATA_COLLECTION_ENDPOINT": "[parameters('dataCollectionEndpointRaw')]",
-                "DCR_IMMUTABLE_ID": "[parameters('immutableId')]",
+                "DCR_IMMUTABLE_ID": "[parameters('dcrImmutableId')]",
                 "TABLE_NAME": "[parameters('tableName')]",
                 "BLOB_URL": "[concat('https://', variables('storageAccountName'), '.blob.core.windows.net/')]"
             }

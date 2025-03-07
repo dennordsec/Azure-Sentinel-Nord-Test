@@ -120,7 +120,7 @@
     },
     "immutableId": {
       "type": "string",
-      "value": "[reference(resourceId('Microsoft.Insights/dataCollectionEndpoints', 'NordPass'), '2021-04-01').immutableId]"
+      "value": "[reference(resourceId('Microsoft.Insights/dataCollectionRules', 'NordPass'), '2021-04-01').immutableId]"
     },
     "endpointUri": {
       "type": "string",
