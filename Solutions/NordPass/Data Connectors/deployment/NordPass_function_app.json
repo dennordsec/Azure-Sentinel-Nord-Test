@@ -97,7 +97,8 @@
         "keyVaultSecretReader": "[format('/subscriptions/){0}/providers/Microsoft.Authorization/roleDefinitions/4633458b-17de-408a-b874-0445c86b69e6', subscription().subscriptionId)]",
         "metricsPublisher": "[format('/subscriptions/){0}/providers/Microsoft.Authorization/roleDefinitions/3913510d-42f4-4e42-8a64-420c390055eb', subscription().subscriptionId)]",
         "uniqueRoleGuidMetricsPublisher": "[guid(resourceId('Microsoft.Storage/storageAccounts', variables('functionName')))]",
-        "uniqueRoleGuidKeyVaultSecretReader": "[guid(resourceId('Microsoft.KeyVault/vaults', variables('functionName')))]"
+        "uniqueRoleGuidKeyVaultSecretReader": "[guid(resourceId('Microsoft.KeyVault/vaults', variables('functionName')))]",
+        "keyVaultCryptoOfficer": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '14b46e9e-c2b7-41b4-b07b-48a6ebf60603')]"
     },
     "resources": [
         {
@@ -437,11 +438,16 @@
         },
         {
             "type": "Microsoft.Authorization/roleAssignments",
-            "apiVersion": "2020-04-01-preview",
-            "scope": "/subscriptions/26d31667-62cb-48bf-8dba-a4f85a1320b7/resourceGroups/FullNordPassSolutionTest/providers/Microsoft.Storage/storageAccounts/storage6s4erjo632dqu",
+            "apiVersion": "2018-01-01-preview",
+            "name": "[concat('/Microsoft.Authorization/', variables('storageAccountName'))]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
+                "[resourceId('Microsoft.Web/sites', variables('functionName'))]"
+            ],
             "properties": {
-                "principalId": "[reference(resourceId('Microsoft.Web/sites', 'nordpass6s4erjo6')).identity.principalId]",
-                "roleDefinitionId": "/subscriptions/26d31667-62cb-48bf-8dba-a4f85a1320b7/providers/Microsoft.Authorization/roleDefinitions/ba92f5b4-2d11-453d-a403-e96b0029c9fe"
+                "roleDefinitionId": "[variables('keyVaultCryptoOfficer')]",
+                "principalId": "[reference(resourceId('Microsoft.Web/sites', variables('functionName')), '2019-08-01', 'full').identity.principalId]",
+                "scope": "Workspace"
             }
         }
     ],
