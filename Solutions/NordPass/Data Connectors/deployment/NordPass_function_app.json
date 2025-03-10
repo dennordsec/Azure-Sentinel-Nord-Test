@@ -18,7 +18,7 @@
                 "description": "Provide schedule in the form of a cron expression"
             }
         },
-        "dataCollectionEndpoint": {
+        "dcrEndpointUri": {
             "type": "string",
             "defaultValue": "<dynamically-created>",
             "metadata": {
@@ -57,10 +57,10 @@
                 "description": "Table name"
             }
         },
-        "dataCollectionEndpointRaw": {
+        "dataCollectionEndpoint": {
             "type": "string",
             "metadata": {
-                "description": "data Collection Endpoint Raw link"
+                "description": "data Collection Endpoint link"
             }
         },
         "storagePrefix": {
@@ -276,7 +276,7 @@
                         "[extensionResourceId(resourceId('Microsoft.KeyVault/vaults/', variables('functionName')), 'Microsoft.Authorization/roleAssignments/', variables('uniqueRoleGuidKeyVaultSecretReader'))]"
                     ],
                     "properties": {
-                        "value": "[parameters('dataCollectionEndpoint')]",
+                        "value": "[parameters('dcrEndpointUri')]",
                         "contentType": "string",
                         "attributes": {
                             "enabled": true
@@ -396,8 +396,8 @@
                 "AzureWebJobsStorage": "[NF.secretName(variables('functionName'), 'AzureWebJobsStorage')]",
                 "schedule": "[parameters('functionSchedule')]",
                 "ACTIVITIES_ENDPOINT": "[parameters('activitiesEndpoint')]",
-                "ACTIVITIES_TOKEN": "[NF.secretName(variables('functionName'), 'activitiesToken')]",
-                "DATA_COLLECTION_ENDPOINT": "[parameters('dataCollectionEndpointRaw')]",
+                "ACTIVITIES_TOKEN": "[parameters('activitiesToken')]",
+                "DATA_COLLECTION_ENDPOINT": "[parameters('dataCollectionEndpoint')]",
                 "DCR_IMMUTABLE_ID": "[parameters('dcrImmutableId')]",
                 "TABLE_NAME": "[parameters('tableName')]",
                 "BLOB_URL": "[concat('https://', variables('storageAccountName'), '.blob.core.windows.net/')]"

@@ -73,8 +73,8 @@
           "activitiesEndpoint": {
             "value": "[parameters('activitiesEndpoint')]"
           },
-          "dataCollectionEndpoint": {
-            "value": "[reference('NordPassTable').outputs.endpointUri.value]"
+          "dcrEndpointUri": {
+            "value": "[reference('NordPassTable').outputs.dcrEndpointUri.value]"
           },
           "activitiesToken": {
             "value": "[parameters('activitiesToken')]"
@@ -85,7 +85,7 @@
           "tableName": {
             "value": "[reference('NordPassTable').outputs.tableName.value]"
           },
-          "dataCollectionEndpointRaw": {
+          "dataCollectionEndpoint": {
             "value": "[reference('NordPassTable').outputs.dataCollectionEndpoint.value]"
           }
         }

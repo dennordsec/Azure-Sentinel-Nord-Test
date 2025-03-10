@@ -122,7 +122,7 @@
       "type": "string",
       "value": "[reference(resourceId('Microsoft.Insights/dataCollectionRules', 'NordPass'), '2021-04-01').immutableId]"
     },
-    "endpointUri": {
+    "dcrEndpointUri": {
       "type": "string",
       "value": "[format('{0}/dataCollectionRules/{1}/streams/{2}?api-version=2021-11-01-preview', reference(resourceId('Microsoft.Insights/dataCollectionEndpoints', 'NordPass'), '2021-04-01').logsIngestion.endpoint, reference(resourceId('Microsoft.Insights/dataCollectionRules', 'NordPass'), '2021-09-01-preview').immutableId, variables('customTable'))]"
     },
