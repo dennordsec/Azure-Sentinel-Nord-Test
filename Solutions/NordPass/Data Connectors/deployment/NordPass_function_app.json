@@ -43,7 +43,7 @@
             "metadata": {
                 "description": "Endpoint for activities"
             },
-            "defaultValue": "https://api-activities.eu.nordpass.com/activities/query"
+            "defaultValue": "https://api-activities.us.nordpass.com/activities/query"
         },
         "dcrImmutableId": {
             "type": "string",
