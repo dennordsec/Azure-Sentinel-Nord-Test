@@ -41,7 +41,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[uri(parameters('baseUri'), 'NordPass_custom_table.json')]",
+          "uri": "[uri(variables('baseUri'), 'NordPass_custom_table.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -58,7 +58,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[uri(parameters('baseUri'), 'NordPass_function_app.json')]",
+          "uri": "[uri(variables('baseUri'), 'NordPass_function_app.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -96,7 +96,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[uri(parameters('baseUri'), 'NordPass_data_connector.json')]",
+          "uri": "[uri(variables('baseUri'), 'NordPass_data_connector.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
