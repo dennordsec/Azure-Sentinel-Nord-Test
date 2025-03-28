@@ -8,15 +8,6 @@
         "description": "Name of the Log Analytics workspace."
       }
     },
-    "functionName": {
-      "type": "string",
-      "defaultValue": "NordPass",
-      "minLength": 1,
-      "maxLength": 11,
-      "metadata": {
-        "description": "Specifies the name of the Function App."
-      }
-    },
     "API_URL": {
       "type": "string",
       "metadata": {
