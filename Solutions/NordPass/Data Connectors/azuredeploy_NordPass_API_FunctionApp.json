@@ -67,7 +67,7 @@
             "value": "[variables('functionName')]"
           },
           "activitiesEndpoint": {
-            "value": "[parameters('ApiURL')]"
+            "value": "[parameters('API_URL')]"
           },
           "dcrEndpointUri": {
             "value": "[reference('NordPassTable').outputs.dcrEndpointUri.value]"
