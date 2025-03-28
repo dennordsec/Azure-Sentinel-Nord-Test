@@ -88,7 +88,7 @@
             "metadata": {
                 "description": "Specifies the URI to the package to deploy"
             },
-            "defaultValue": "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/NordPass/Data%20Connectors/function.zip"
+            "defaultValue": "https://raw.githubusercontent.com/dennordsec/Azure-Sentinel-Nord-Test/main/Solutions/NordPass/Data%20Connectors/function.zip"
         }
     },
     "variables": {
