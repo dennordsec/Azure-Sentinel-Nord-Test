@@ -32,13 +32,13 @@
                 "description": "Azure region where the resources will be deployed"
             }
         },
-        "activitiesToken": {
+        "nordpassToken": {
             "type": "securestring",
             "metadata": {
                 "description": "Token for activities authentication"
             }
         },
-        "activitiesEndpoint": {
+        "nordpassEndpointUrl": {
             "type": "string",
             "metadata": {
                 "description": "Endpoint for activities"
@@ -88,7 +88,7 @@
             "metadata": {
                 "description": "Specifies the URI to the package to deploy"
             },
-            "defaultValue": "https://raw.githubusercontent.com/dennordsec/Azure-Sentinel-Nord-Test/main/Solutions/NordPass/Data%20Connectors/function.zip"
+            "defaultValue": "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/NordPass/Data%20Connectors/function.zip"
         }
     },
     "variables": {
@@ -222,13 +222,13 @@
                 {
                     "type": "secrets",
                     "apiVersion": "2019-09-01",
-                    "name": "ActivitiesToken",
+                    "name": "NordpassToken",
                     "dependsOn": [
                         "[resourceId('Microsoft.KeyVault/vaults/', variables('functionName'))]",
                         "[extensionResourceId(resourceId('Microsoft.KeyVault/vaults/', variables('functionName')), 'Microsoft.Authorization/roleAssignments/', variables('uniqueRoleGuidKeyVaultSecretReader'))]"
                     ],
                     "properties": {
-                        "value": "[parameters('activitiesToken')]",
+                        "value": "[parameters('nordpassToken')]",
                         "contentType": "string",
                         "attributes": {
                             "enabled": true
@@ -238,13 +238,13 @@
                 {
                     "type": "secrets",
                     "apiVersion": "2019-09-01",
-                    "name": "ActivitiesEndpoint",
+                    "name": "NordpassEndpointUrl",
                     "dependsOn": [
                         "[resourceId('Microsoft.KeyVault/vaults/', variables('functionName'))]",
                         "[extensionResourceId(resourceId('Microsoft.KeyVault/vaults/', variables('functionName')), 'Microsoft.Authorization/roleAssignments/', variables('uniqueRoleGuidKeyVaultSecretReader'))]"
                     ],
                     "properties": {
-                        "value": "[parameters('activitiesEndpoint')]",
+                        "value": "[parameters('nordpassEndpointUrl')]",
                         "contentType": "string",
                         "attributes": {
                             "enabled": true
@@ -395,8 +395,8 @@
                 "WEBSITE_RUN_FROM_PACKAGE": "1",
                 "AzureWebJobsStorage": "[NF.secretName(variables('functionName'), 'AzureWebJobsStorage')]",
                 "schedule": "[parameters('functionSchedule')]",
-                "NORDPASS_ENDPOINT_URL": "[parameters('activitiesEndpoint')]",
-                "NORDPASS_TOKEN": "[parameters('activitiesToken')]",
+                "NORDPASS_ENDPOINT_URL": "[parameters('nordpassEndpointUrl')]",
+                "NORDPASS_TOKEN": "[parameters('nordpassToken')]",
                 "DATA_COLLECTION_ENDPOINT": "[parameters('dataCollectionEndpoint')]",
                 "DCR_IMMUTABLE_ID": "[parameters('dcrImmutableId')]",
                 "TABLE_NAME": "[parameters('tableName')]",

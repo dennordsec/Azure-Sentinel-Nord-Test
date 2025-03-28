@@ -31,7 +31,7 @@
     }
   },
   "variables": {
-    "baseUri": "https://raw.githubusercontent.com/dennordsec/Azure-Sentinel-Nord-Test/refs/heads/main/Solutions/NordPass/Data%20Connectors/deployment/",
+    "baseUri": "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/NordPass/Data%20Connectors/deployment/",
     "functionName": "NordPass"
   },
   "resources": [
@@ -66,13 +66,13 @@
           "functionName": {
             "value": "[variables('functionName')]"
           },
-          "activitiesEndpoint": {
+          "nordpassEndpointUrl": {
             "value": "[parameters('API_URL')]"
           },
           "dcrEndpointUri": {
             "value": "[reference('NordPassTable').outputs.dcrEndpointUri.value]"
           },
-          "activitiesToken": {
+          "nordpassToken": {
             "value": "[parameters('Token')]"
           },
           "dcrImmutableId": {
