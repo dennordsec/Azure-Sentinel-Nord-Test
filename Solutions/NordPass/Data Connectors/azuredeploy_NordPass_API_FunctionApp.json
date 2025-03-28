@@ -17,11 +17,12 @@
         "description": "Specifies the name of the Function App."
       }
     },
-    "API_URL": {
+    "ApiURL": {
       "type": "string",
       "metadata": {
         "description": "The URL that accompanied the token  you created in NordPass’ Admin Panel."
-      }
+      },
+      "label":"API URL"
     },
     "Token": {
       "type": "securestring",
