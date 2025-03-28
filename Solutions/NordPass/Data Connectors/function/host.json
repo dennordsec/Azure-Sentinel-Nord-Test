@@ -20,8 +20,8 @@
         "-dcr-uuid", "%DCR_IMMUTABLE_ID%",
         "-logs-endpoint", "%DATA_COLLECTION_ENDPOINT%",
         "-storage-endpoint", "%BLOB_URL%",
-        "-activities-token", "%ACTIVITIES_TOKEN%",
-        "-activities-endpoint", "%ACTIVITIES_ENDPOINT%"
+        "-nordpass-token", "%NORDPASS_TOKEN%",
+        "-nordpass-endpoint-url", "%NORDPASS_ENDPOINT_URL%"
       ]
     }
   }

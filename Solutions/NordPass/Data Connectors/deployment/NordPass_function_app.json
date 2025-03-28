@@ -60,7 +60,7 @@
         "dataCollectionEndpoint": {
             "type": "string",
             "metadata": {
-                "description": "data Collection Endpoint link"
+                "description": "Data Collection Endpoint link"
             }
         },
         "storagePrefix": {
@@ -395,8 +395,8 @@
                 "WEBSITE_RUN_FROM_PACKAGE": "1",
                 "AzureWebJobsStorage": "[NF.secretName(variables('functionName'), 'AzureWebJobsStorage')]",
                 "schedule": "[parameters('functionSchedule')]",
-                "ACTIVITIES_ENDPOINT": "[parameters('activitiesEndpoint')]",
-                "ACTIVITIES_TOKEN": "[parameters('activitiesToken')]",
+                "NORDPASS_ENDPOINT_URL": "[parameters('activitiesEndpoint')]",
+                "NORDPASS_TOKEN": "[parameters('activitiesToken')]",
                 "DATA_COLLECTION_ENDPOINT": "[parameters('dataCollectionEndpoint')]",
                 "DCR_IMMUTABLE_ID": "[parameters('dcrImmutableId')]",
                 "TABLE_NAME": "[parameters('tableName')]",
