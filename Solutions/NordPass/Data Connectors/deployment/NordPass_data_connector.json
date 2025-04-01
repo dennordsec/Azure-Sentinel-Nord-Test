@@ -43,7 +43,7 @@
           "id": "NordPass",
           "title": "NordPass",
           "publisher": "NordPass",
-          "descriptionMarkdown": "The [NordPass](https://nordpass.com) integration with Microsoft Sentinel allows you to collect NordPass logs and security-related events. This enables enhanced monitoring and analysis of credential management activities.",
+          "descriptionMarkdown": "To connect NordPass Activity Log data with Microsoft Sentinel and receive it periodically, you must install this data connector for NordPass. After installing, configure and enable this data connector by following the guidance in the “Manage” section.",
           "graphQueriesTableName": "NordPassEventLogs_CL",
           "graphQueries": [
             {
@@ -74,8 +74,8 @@
             "resourceProvider": [
               {
                 "provider": "Microsoft.OperationalInsights/workspaces",
-                "permissionsDisplayText": "Requires read and write access to the Log Analytics workspace.",
-                "providerDisplayName": "NordPass Log Analytics Workspace",
+                "permissionsDisplayText": "read and write permissions on the workspace are required.",
+                "providerDisplayName": "Workspace",
                 "scope": "Workspace",
                 "requiredPermissions": {
                   "write": true,
@@ -86,30 +86,24 @@
             ],
             "customs": [
               {
-                "name": "Azure Functions Permissions",
-                "description": "Access to Azure Functions is needed to create and manage function apps for log ingestion."
+                "name": "Microsoft.Web/sites permissions",
+                "description": "Read and write permissions to Azure Functions to create a Function App is required. [See the documentation to learn more about Azure Functions](https://docs.microsoft.com/azure/azure-functions/)."
               },
               {
-                "name": "NordPass API Access",
-                "description": "An API Token from NordPass is necessary to retrieve security logs."
+                "name": "NordPass API credentials",
+                "description": "Generate a [Microsoft Sentinel API URL and token](https://support.nordpass.com/hc/en-us/articles/31972037289873) in the NordPass Admin Panel to finish the Azure Functions integration. Please note that you’ll need the NordPass Enterprise account for that."
               }
             ]
           },
           "instructionSteps": [
             {
-              "description": ">**NOTE:** This connector utilizes Azure Functions to securely retrieve NordPass logs and integrate them into Microsoft Sentinel."
+              "description": "To proceed with the Microsoft Sentinel setup, click the [![Deploy To Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdennordsec%2FAzure-Sentinel-Nord-Test%2Frefs%2Fheads%2Fmain%2FSolutions%2FNordPass%2FData%2520Connectors%2Fazuredeploy_NordPass_API_FunctionApp.json) button(TODO: CHANGE THE LINKS!) and follow the instructions."
             },
             {
-              "description": ">**(Optional Step)** Consider storing workspace credentials and API tokens in Azure Key Vault for enhanced security."
+              "description": "Please note that after the successful deployment, the system pulls Activity Log data every 1 minute by default."
             },
             {
-              "description": "**STEP 1 - Obtain NordPass API Credentials**\n\n Follow NordPass documentation](https://nordpass.com) to generate an API token for log access."
-            },
-            {
-              "description": "**STEP 2 - Deploy the Azure Function App**\n\n>**IMPORTANT:** Ensure a custom table for logs is created prior to deployment."
-            },
-            {
-              "description": "To automate deployment of the NordPass connector, follow these steps:\n\n1. Click the **Deploy to Azure** button below.\n\n\t[![Deploy To Azure](https://aka.ms/deploytoazurebutton)](https://aka.ms/sentinel-NordPass-azuredeploy)"
+              "description": "**Important:** This connector uses Azure Functions to retrieve Activity Logs from NordPass into Microsoft Sentinel. This may result in additional data ingestion costs. For more information, refer to the [Azure Functions pricing page](https://azure.microsoft.com/en-gb/pricing/details/functions/)."
             }
           ]
         }
