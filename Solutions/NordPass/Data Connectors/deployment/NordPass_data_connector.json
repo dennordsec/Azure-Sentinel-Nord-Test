@@ -43,7 +43,7 @@
           "id": "NordPass",
           "title": "NordPass",
           "publisher": "NordPass",
-          "descriptionMarkdown": "To connect NordPass Activity Log data with Microsoft Sentinel and receive it periodically, you must install this data connector for NordPass. After installing, configure and enable this data connector by following the guidance in the “Manage” section.",
+          "descriptionMarkdown": "Integrating NordPass with Microsoft Sentinel SIEM via the API will allow you to automatically transfer Activity Log data from NordPass to Microsoft Sentinel and get real-time insights, such as item activity, all login attempts, and security notifications.",
           "graphQueriesTableName": "NordPassEventLogs_CL",
           "graphQueries": [
             {
