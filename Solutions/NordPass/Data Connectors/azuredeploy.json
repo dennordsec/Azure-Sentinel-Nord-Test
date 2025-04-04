@@ -88,7 +88,7 @@
                     },
                     "instructionSteps": [
                         {
-                            "description": "TEST1:To proceed with the Microsoft Sentinel setup, click"
+                            "description": "To proceed with the Microsoft Sentinel setup, click"
                         },
                         {
                             "description": "[![Deploy To Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdennordsec%2FAzure-Sentinel-Nord-Test%2Frefs%2Fheads%2Fmain%2FSolutions%2FNordPass%2FData%2520Connectors%2Fazuredeploy_NordPass_API_FunctionApp.json)"
