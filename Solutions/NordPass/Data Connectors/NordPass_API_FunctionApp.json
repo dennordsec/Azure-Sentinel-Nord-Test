@@ -57,9 +57,6 @@
                 "description": "[Add Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/quickstart-onboard#enable-microsoft-sentinel-) to the created Log Analytics workspace"
             },
             {
-                "description": "Read and write permissions required for the [Log Analytics workspace](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/manage-access?tabs=portal) and [Azure Functions](https://learn.microsoft.com/en-us/azure/azure-functions/security-concepts#permissions)."
-            },
-            {
                 "description": "Generate a [Microsoft Sentinel API URL and token](https://www.google.com/url?q=https://support.nordpass.com/hc/en-us/articles/31972037289873&sa=D&source=docs&ust=1743770997230005&usg=AOvVaw16p0hstJ6OeBBoFdBKZRfr) in the NordPass Admin Panel to finish the Azure Functions integration. Please note that you’ll need the NordPass Enterprise account for that."
             }                       ,
             {
