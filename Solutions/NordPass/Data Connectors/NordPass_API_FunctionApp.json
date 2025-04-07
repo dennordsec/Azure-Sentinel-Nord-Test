@@ -58,7 +58,7 @@
             },
             {
                 "description": "Generate a [Microsoft Sentinel API URL and token](https://www.google.com/url?q=https://support.nordpass.com/hc/en-us/articles/31972037289873&sa=D&source=docs&ust=1743770997230005&usg=AOvVaw16p0hstJ6OeBBoFdBKZRfr) in the NordPass Admin Panel to finish the Azure Functions integration. Please note that you’ll need the NordPass Enterprise account for that."
-            }                       ,
+            },
             {
                 "description": "**Important:** This connector uses Azure Functions to retrieve Activity Logs from NordPass into Microsoft Sentinel. This may result in additional data ingestion costs. For more information, refer to the Azure Functions pricing page."
             }
@@ -66,7 +66,7 @@
     },
     "instructionSteps": [
         {
-            "description": "To proceed with the Microsoft Sentinel setup\n\n1. Click the **Deploy to Azure** button below. \n\n\t[![Deploy To Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdennordsec%2FAzure-Sentinel-Nord-Test%2Frefs%2Fheads%2Fmain%2FSolutions%2FNordPass%2FData%2520Connectors%2Fazuredeploy_NordPass_API_FunctionApp.json)\n **Please note that after the successful deployment, the system pulls Activity Log data every 1 minute by default.**"
+            "description": "To proceed with the Microsoft Sentinel setup\n\n1. Click the **Deploy to Azure** button below. \n\n\t[![Deploy To Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdennordsec%2FAzure-Sentinel-Nord-Test%2Frefs%2Fheads%2Fmain%2FSolutions%2FNordPass%2FData%2520Connectors%2Fazuredeploy_NordPass_API_FunctionApp.json)\n2. **Please note that after the successful deployment, the system pulls Activity Log data every 1 minute by default.**"
         }
     ]
 }
