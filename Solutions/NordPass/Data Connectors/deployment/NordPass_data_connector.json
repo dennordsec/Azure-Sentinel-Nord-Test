@@ -101,8 +101,8 @@
           },
           "instructionSteps": [
             {
-              "description": "To proceed with the Microsoft Sentinel setup \n\n Click the **Deploy to Azure** button below. \n\n\tt[![Deploy To Azure](https://aka.ms/deploytoazurebutton)](https://aka.ms/sentinel-OnePassword-azuredeploy)\n and follow the instructions. \n **Please note that after the successful deployment, the system pulls Activity Log data every 1 minute by default.**",
-              "title": "Configuration"
+              "description": "This method provides an automated deployment of the 1Password connector using an ARM Tempate.\n\n1. Click the **Deploy to Azure** button below. \n\n\t[![Deploy To Azure](https://aka.ms/deploytoazurebutton)](https://aka.ms/sentinel-OnePassword-azuredeploy)\n2. Select the preferred **Subscription**, **Resource Group** and **Location**. \n3. Enter the **Workspace Name**, **Workspace Name**, **API Key**, and **URI**.\n - The default **Time Interval** is set to pull the last five (5) minutes of data. If the time interval needs to be modified, it is recommended to change the Function App Timer Trigger accordingly (in the function.json file, post deployment) to prevent overlapping data ingestion.\n - Note: If using Azure Key Vault secrets for any of the values above, use the`@Microsoft.KeyVault(SecretUri={Security Identifier})`schema in place of the string values. Refer to [Key Vault references documentation](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references) for further details. \n4. Mark the checkbox labeled **I agree to the terms and conditions stated above**. \n5. Click **Purchase** to deploy.",
+              "title": "Option 1 - Azure Resource Manager (ARM) Template"
             },
             {
               "description": "**Please note that after the successful deployment, the system pulls Activity Log data every 1 minute by default.**"
