@@ -8,7 +8,7 @@
         "description": "Name of the Log Analytics workspace."
       }
     },
-    "API_URL": {
+    "ApiURL": {
       "type": "string",
       "metadata": {
         "description": "The URL that accompanied the token  you created in NordPass’ Admin Panel."
@@ -22,7 +22,7 @@
     }
   },
   "variables": {
-    "baseUri": "https://raw.githubusercontent.com/dennordsec/Azure-Sentinel-Nord-Test/refs/heads/main/Solutions/NordPass/Data%20Connectors/deployment/",
+    "baseUri": "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/NordPass/Data%20Connectors/deployment/",
     "functionName": "NordPass"
   },
   "resources": [
@@ -58,7 +58,7 @@
             "value": "[variables('functionName')]"
           },
           "nordpassEndpointUrl": {
-            "value": "[parameters('API_URL')]"
+            "value": "[parameters('ApiURL')]"
           },
           "dcrEndpointUri": {
             "value": "[reference('NordPassTable').outputs.dcrEndpointUri.value]"
