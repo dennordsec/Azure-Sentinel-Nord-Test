@@ -63,6 +63,12 @@
                 "description": "Data Collection Endpoint link"
             }
         },
+        "appVersion": {
+            "type": "string",
+            "metadata": {
+                "description": "App version"
+            }
+        },
         "storagePrefix": {
             "type": "string",
             "defaultValue": "storage",
@@ -400,7 +406,8 @@
                 "DATA_COLLECTION_ENDPOINT": "[parameters('dataCollectionEndpoint')]",
                 "DCR_IMMUTABLE_ID": "[parameters('dcrImmutableId')]",
                 "TABLE_NAME": "[parameters('tableName')]",
-                "BLOB_URL": "[concat('https://', variables('storageAccountName'), '.blob.core.windows.net/')]"
+                "BLOB_URL": "[concat('https://', variables('storageAccountName'), '.blob.core.windows.net/')]",
+                "APP_VERSION": "[parameters('appVersion')]"
             }
         },
         {
