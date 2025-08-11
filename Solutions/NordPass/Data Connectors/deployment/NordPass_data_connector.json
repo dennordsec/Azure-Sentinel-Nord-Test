@@ -93,7 +93,7 @@
               },
               {
                 "description": "Generate a [Microsoft Sentinel API URL and token](https://www.google.com/url?q=https://support.nordpass.com/hc/en-us/articles/31972037289873&sa=D&source=docs&ust=1743770997230005&usg=AOvVaw16p0hstJ6OeBBoFdBKZRfr) in the NordPass Admin Panel to finish the Azure Functions integration. Please note that you’ll need the NordPass Enterprise account for that."
-              }                       ,
+              },
               {
                 "description": "**Important:** This connector uses Azure Functions to retrieve Activity Logs from NordPass into Microsoft Sentinel. This may result in additional data ingestion costs. For more information, refer to the Azure Functions pricing page."
               }
